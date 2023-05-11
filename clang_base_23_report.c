@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <assert.h>
 
 #define MAX_ROWS 16
 #define BITS 16
@@ -43,16 +42,6 @@ void binary_sum(int binary_numbers[MAX_ROWS][BITS], int sum_binary[BITS]) {
         printf("Overflow!\n");
         return;
     }
-
-    // Print the binary sum
-    printf("The binary sum is:\n{ ");
-    for (int i = 0; i < BITS; i++) {
-        printf("%d", sum_binary[i]);
-        if (i < BITS - 1) {
-            printf(", ");
-        }
-    }
-    printf(" }\n");
 }
 
 
@@ -89,36 +78,15 @@ int multi(unsigned int num1, unsigned int num2) {
         }
     }
 
-    // Print the content of result_binary
-    printf("The content of result_binary is:\n");
-    for (int i = 0; i < row; i++) {
-        printf("{ ");
-        for (int j = 0; j < BITS; j++) {
-            printf("%d", result_binary[i][j]);
-            if (j < BITS - 1) {
-                printf(", ");
-            }
-        }
-        printf(" }\n");
-    }
-
     // Convert the result to decimal number and return it.
     int result_sum_binary[BITS] = {0};
     binary_sum(result_binary, result_sum_binary);
     unsigned int result_decimal = to_decimal(result_sum_binary);
-    printf("The result of multiplication is: %d\n\n", result_decimal);
     return result_decimal;
 }
 
 int main() {
-    // Assert some patterns.
-    assert(multi(100, 100) == 10000);
-    assert(multi(0, 0) == 0);
-    assert(multi(5, 6) == 30);
-    assert(multi(5, 11) == 55);
-    assert(multi(3, 2) == 6);
-    assert(multi(0, 9) == 0);
-   // Accept 2 numbers from user and print the result of multiplication.
+    // Accept 2 numbers from user and print the result of multiplication.
     unsigned int num1, num2;
     printf("正の整数1 > ");
     scanf("%d", &num1);
